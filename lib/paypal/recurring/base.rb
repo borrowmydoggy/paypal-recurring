@@ -114,7 +114,7 @@ module PayPal
       #   response = ppr.checkout_details
       #
       def checkout_details
-        request.run(:details, :token => token, :req_billing_address => req_billing_address)
+        request.run(:details, :token => token)
       end
 
       # Request payment.
@@ -142,7 +142,8 @@ module PayPal
           :item_category,
           :item_name,
           :item_amount,
-          :item_quantity
+          :item_quantity,
+          :req_billing_address
         ).merge(:payment_action => "Sale")
 
         request.run(:payment, params)

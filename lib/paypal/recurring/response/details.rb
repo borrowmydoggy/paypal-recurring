@@ -20,10 +20,6 @@ module PayPal
         def agreed?
           params[:BILLINGAGREEMENTACCEPTEDSTATUS] == "1"
         end
-
-        def get_params
-          params
-        end
       end
     end
   end
