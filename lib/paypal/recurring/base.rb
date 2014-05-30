@@ -69,7 +69,8 @@ module PayPal
           :item_category,
           :item_name,
           :item_amount,
-          :item_quantity
+          :item_quantity,
+          :req_billing_address
         ).merge(
           :payment_action => "Authorization",
           :no_shipping => 1,
