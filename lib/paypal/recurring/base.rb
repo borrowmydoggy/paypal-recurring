@@ -143,8 +143,7 @@ module PayPal
           :item_category,
           :item_name,
           :item_amount,
-          :item_quantity,
-          :req_billing_address
+          :item_quantity
         ).merge(:payment_action => "Sale")
 
         request.run(:payment, params)
