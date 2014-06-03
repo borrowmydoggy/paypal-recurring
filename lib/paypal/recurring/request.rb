@@ -111,9 +111,6 @@ module PayPal
       #
       def run(method, params = {})
         params = prepare_params(params.merge(:method => METHODS.fetch(method, method.to_s)))
-
-        puts "runam request i parami su #{params}"
-
         response = post(params)
         Response.process(method, response)
       end
