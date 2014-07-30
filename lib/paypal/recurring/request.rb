@@ -2,14 +2,15 @@ module PayPal
   module Recurring
     class Request
       METHODS = {
-        :checkout       => "SetExpressCheckout",
-        :payment        => "DoExpressCheckoutPayment",
-        :details        => "GetExpressCheckoutDetails",
-        :create_profile => "CreateRecurringPaymentsProfile",
-        :profile        => "GetRecurringPaymentsProfileDetails",
-        :manage_profile => "ManageRecurringPaymentsProfileStatus",
-        :update_profile => "UpdateRecurringPaymentsProfile",
-        :refund         => "RefundTransaction"
+        :checkout                     => "SetExpressCheckout",
+        :payment                      => "DoExpressCheckoutPayment",
+        :details                      => "GetExpressCheckoutDetails",
+        :create_profile               => "CreateRecurringPaymentsProfile",
+        :profile                      => "GetRecurringPaymentsProfileDetails",
+        :manage_profile               => "ManageRecurringPaymentsProfileStatus",
+        :update_profile               => "UpdateRecurringPaymentsProfile",
+        :refund                       => "RefundTransaction",
+        :create_billing_agreement     => "CreateBillingAgreement"
       }
 
       INITIAL_AMOUNT_ACTIONS = {
@@ -89,7 +90,8 @@ module PayPal
         :trial_period          => "TRIALBILLINGPERIOD",
         :username              => "USER",
         :version               => "VERSION",
-        :req_billing_address   => "REQBILLINGADDRESS"
+        :req_billing_address   => "REQBILLINGADDRESS",
+        :recurring_payment     => "L_BILLINGTYPE0"
       }
 
       CA_FILE = File.dirname(__FILE__) + "/cacert.pem"

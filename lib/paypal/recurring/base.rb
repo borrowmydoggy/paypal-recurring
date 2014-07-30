@@ -32,6 +32,7 @@ module PayPal
       attr_accessor :trial_period
       attr_accessor :trial_amount
       attr_accessor :req_billing_address
+      attr_accessor :recurring_payment
 
       def initialize(options = {})
         options.each {|name, value| send("#{name}=", value)}
@@ -70,11 +71,12 @@ module PayPal
           :item_name,
           :item_amount,
           :item_quantity,
-          :req_billing_address
+          :req_billing_address,
+          :recurring_payment
+
         ).merge(
           :payment_action => "Authorization",
-          :no_shipping => 1,
-          :L_BILLINGTYPE0 => "RecurringPayments"
+          :no_shipping => 1
         )
 
         request.run(:checkout, params)
@@ -234,6 +236,15 @@ module PayPal
         )
 
         request.run(:update_profile, params)
+      end
+
+      # Create billing agreement (so that customer can be charged later)
+      #
+      #   ppr = PayPal::Recurring.new(:token => "EC-6LX60229XS426623E")
+      #   response = ppr.profile
+      #
+      def create_billing_agreement
+        request.run(:token => token)
       end
 
       # Retrieve information about existing recurring profile.
