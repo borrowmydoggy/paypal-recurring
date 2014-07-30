@@ -32,7 +32,7 @@ module PayPal
       attr_accessor :trial_period
       attr_accessor :trial_amount
       attr_accessor :req_billing_address
-      attr_accessor :recurring_payment
+      attr_accessor :billing_type
 
       def initialize(options = {})
         options.each {|name, value| send("#{name}=", value)}
@@ -72,7 +72,7 @@ module PayPal
           :item_amount,
           :item_quantity,
           :req_billing_address,
-          :recurring_payment
+          :billing_type
 
         ).merge(
           :payment_action => "Authorization",

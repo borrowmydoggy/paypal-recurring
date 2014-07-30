@@ -91,7 +91,7 @@ module PayPal
         :username              => "USER",
         :version               => "VERSION",
         :req_billing_address   => "REQBILLINGADDRESS",
-        :recurring_payment     => "L_BILLINGTYPE0"
+        :billing_type          => "L_BILLINGTYPE0"
       }
 
       CA_FILE = File.dirname(__FILE__) + "/cacert.pem"
