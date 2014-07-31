@@ -245,7 +245,11 @@ module PayPal
       #   response = ppr.profile
       #
       def create_billing_agreement
-        request.run(:create_billing_agreement, :token => token)
+        params = collect(
+          :token
+        )
+
+        request.run(:create_billing_agreement, params)
       end
 
       # Retrieve information about existing recurring profile.
