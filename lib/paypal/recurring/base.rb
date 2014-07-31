@@ -33,6 +33,7 @@ module PayPal
       attr_accessor :trial_amount
       attr_accessor :req_billing_address
       attr_accessor :billing_type
+      attr_accessor :billing_agreement_desc
 
       def initialize(options = {})
         options.each {|name, value| send("#{name}=", value)}
