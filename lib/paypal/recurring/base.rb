@@ -34,6 +34,8 @@ module PayPal
       attr_accessor :req_billing_address
       attr_accessor :billing_type
       attr_accessor :billing_agreement_id
+      attr_accessor :payment_action
+      attr_accessor :ref_payment_action
 
       def initialize(options = {})
         options.each {|name, value| send("#{name}=", value)}
@@ -73,10 +75,9 @@ module PayPal
           :item_amount,
           :item_quantity,
           :req_billing_address,
-          :billing_type
-
+          :billing_type,
+          :payment_action
         ).merge(
-          :payment_action => "Sale",
           :no_shipping => 1
         )
 
@@ -146,8 +147,9 @@ module PayPal
           :item_category,
           :item_name,
           :item_amount,
-          :item_quantity
-        ).merge(:payment_action => "Sale")
+          :item_quantity,
+          :payment_action
+        )
 
         request.run(:payment, params)
       end
@@ -261,8 +263,9 @@ module PayPal
           :token,
           :billing_agreement_id,
           :amount,
-          :currency
-        ).merge(:ref_payment_action => "Sale")
+          :currency,
+          :ref_payment_action
+        )
 
         request.run(:reference_transaction, params)
       end

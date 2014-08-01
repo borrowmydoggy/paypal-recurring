@@ -21,7 +21,8 @@ module PayPal
         :seller_id        => :receiver_id,
         :email            => :receiver_email,
         :initial_amount   => :initial_payment_amount,
-        :payer_email      => :payer_email
+        :payer_email      => :payer_email,
+        :custom           => :custom
       })
 
       def initialize(params = {})
@@ -44,6 +45,14 @@ module PayPal
 
       def recurring_payment_profile?
         type == "recurring_payment_profile_created"
+      end
+
+      def reference_transaction?
+        type == "merch_pmt"
+      end
+
+      def upgrade_payment?
+        custom.try(:include?, 'Upgrade Payment')
       end
 
       def request
