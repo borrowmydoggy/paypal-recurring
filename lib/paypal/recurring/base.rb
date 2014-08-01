@@ -33,6 +33,7 @@ module PayPal
       attr_accessor :trial_amount
       attr_accessor :req_billing_address
       attr_accessor :billing_type
+      attr_accessor :billing_agreement_id
 
       def initialize(options = {})
         options.each {|name, value| send("#{name}=", value)}
@@ -241,10 +242,26 @@ module PayPal
       # Create billing agreement (so that customer can be charged later)
       #
       #   ppr = PayPal::Recurring.new(:token => "EC-6LX60229XS426623E")
-      #   response = ppr.profile
+      #   response = ppr.create_billing_agreement
       #
       def create_billing_agreement
         request.run(:create_billing_agreement, :token => token)
+      end
+
+      # Do reference transaction, charge customer based on a previous agreement
+      #
+      #   ppr = PayPal::Recurring.new({
+      #     :token                 => "EC-6LX60229XS426623E",
+      #     :billing_agreement_id  => "B-8H4876884J5720838"
+      #   })
+      #   response = ppr.create_billing_agreement
+      #
+      def reference_transaction
+        params = collect(
+          :token,
+          :billing_agreement_id
+        )
+        request.run(:reference_transaction, params)
       end
 
       # Retrieve information about existing recurring profile.

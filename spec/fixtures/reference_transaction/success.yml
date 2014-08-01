@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api-3t.sandbox.paypal.com/nvp
     body:
       encoding: US-ASCII
-      string: USER=emir.ibrahimbegovic%2Bseller_api1.gmail.com&PWD=PRTZZX6JDACB95SA&SIGNATURE=AJnjtLN0ozBP-BF2ZJrj5sfbmGAxAnf5tev1-MgK5Z8IASmtj-Fw.5pt&VERSION=72.0&AMT=9.00&L_BILLINGAGREEMENTDESCRIPTION0=Awesome+-+Monthly+Subscription&PAYERID=D2U7M6PTMJBML&TOKEN=EC-47J551124P900104V&METHOD=CreateBillingAgreement
+      string: USER=emir.ibrahimbegovic%2Bseller_api1.gmail.com&PWD=PRTZZX6JDACB95SA&SIGNATURE=AJnjtLN0ozBP-BF2ZJrj5sfbmGAxAnf5tev1-MgK5Z8IASmtj-Fw.5pt&VERSION=72.0&AMT=9.00&CURRENCYCODE=GBP&PAYERID=D2U7M6PTMJBML&TOKEN=EC-47J551124P900104V&METHOD=CreateBillingAgreement&REFERENCEID=B-7FB31251F28061234
     headers:
       accept:
       - ! '*/*'
@@ -32,7 +32,7 @@ http_interactions:
       - text/plain; charset=utf-8
     body:
       encoding: US-ASCII
-      string: BILLINGAGREEMENTID=B%2d7FB31251F28061234&ACK=Success&VERSION=72%2e0&BUILD=2764190
+      string: BILLINGAGREEMENTID=B%2d7FB31251F28061234&ACK=Success&VERSION=72%2e0&BUILD=2764190&TRANSACTIONID=98A13946GS4491234&PAYMENTTYPE=instant&PAYMENTSTATUS=Completed&AMT=50%2e00
     http_version: '1.1'
   recorded_at: Mon, 23 Apr 2012 03:57:44 GMT
 recorded_with: VCR 2.1.0

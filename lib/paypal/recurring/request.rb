@@ -10,7 +10,8 @@ module PayPal
         :manage_profile               => "ManageRecurringPaymentsProfileStatus",
         :update_profile               => "UpdateRecurringPaymentsProfile",
         :refund                       => "RefundTransaction",
-        :create_billing_agreement     => "CreateBillingAgreement"
+        :create_billing_agreement     => "CreateBillingAgreement",
+        :reference_transaction        => "DoReferenceTransaction"
       }
 
       INITIAL_AMOUNT_ACTIONS = {
@@ -91,7 +92,8 @@ module PayPal
         :username               => "USER",
         :version                => "VERSION",
         :req_billing_address    => "REQBILLINGADDRESS",
-        :billing_type           => "L_BILLINGTYPE0"
+        :billing_type           => "L_BILLINGTYPE0",
+        :billing_agreement_id   => "REFERENCEID"
       }
 
       CA_FILE = File.dirname(__FILE__) + "/cacert.pem"
