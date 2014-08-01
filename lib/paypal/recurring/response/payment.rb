@@ -18,6 +18,10 @@ module PayPal
         def approved?
           params[:PAYMENTINFO_0_ACK] == "Success"
         end
+
+        def billing_agreement_id
+          params[:BILLINGAGREEMENTID]
+        end
       end
     end
   end
