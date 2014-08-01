@@ -7,17 +7,18 @@ module PayPal
       autoload :Payment, "paypal/recurring/response/payment"
       autoload :ManageProfile, "paypal/recurring/response/manage_profile"
       autoload :Profile, "paypal/recurring/response/profile"
-      autoload :Refund,  "paypal/recurring/response/refund"
+      autoload :BillingAgreement,  "paypal/recurring/response/billing_agreement"
 
       RESPONDERS = {
-        :checkout       => "Checkout",
-        :details        => "Details",
-        :payment        => "Payment",
-        :profile        => "Profile",
-        :create_profile => "ManageProfile",
-        :manage_profile => "ManageProfile",
-        :update_profile => "ManageProfile",
-        :refund         => "Refund"
+        :checkout                 => "Checkout",
+        :details                  => "Details",
+        :payment                  => "Payment",
+        :profile                  => "Profile",
+        :create_profile           => "ManageProfile",
+        :manage_profile           => "ManageProfile",
+        :update_profile           => "ManageProfile",
+        :create_billing_agreement => "BillingAgreement",
+        :refund                   => "Refund"
       }
 
       def self.process(method, response)

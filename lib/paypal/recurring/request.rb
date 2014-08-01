@@ -91,8 +91,7 @@ module PayPal
         :username               => "USER",
         :version                => "VERSION",
         :req_billing_address    => "REQBILLINGADDRESS",
-        :billing_type           => "L_BILLINGTYPE0",
-        :billing_agreement_desc => "L_BILLINGAGREEMENTDESCRIPTION0"
+        :billing_type           => "L_BILLINGTYPE0"
       }
 
       CA_FILE = File.dirname(__FILE__) + "/cacert.pem"
@@ -114,6 +113,7 @@ module PayPal
       #
       def run(method, params = {})
         params = prepare_params(params.merge(:method => METHODS.fetch(method, method.to_s)))
+        puts params.inspect
         response = post(params)
         Response.process(method, response)
       end

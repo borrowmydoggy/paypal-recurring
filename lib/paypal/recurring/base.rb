@@ -33,7 +33,6 @@ module PayPal
       attr_accessor :trial_amount
       attr_accessor :req_billing_address
       attr_accessor :billing_type
-      attr_accessor :billing_agreement_desc
 
       def initialize(options = {})
         options.each {|name, value| send("#{name}=", value)}
@@ -245,11 +244,7 @@ module PayPal
       #   response = ppr.profile
       #
       def create_billing_agreement
-        params = collect(
-          :token
-        )
-
-        request.run(:create_billing_agreement, params)
+        request.run(:create_billing_agreement, :token => token)
       end
 
       # Retrieve information about existing recurring profile.
