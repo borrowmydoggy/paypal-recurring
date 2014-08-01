@@ -76,7 +76,7 @@ module PayPal
           :billing_type
 
         ).merge(
-          :payment_action => "Authorization",
+          :payment_action => "Sale",
           :no_shipping => 1
         )
 
@@ -262,7 +262,7 @@ module PayPal
           :billing_agreement_id,
           :amount,
           :currency
-        ).merge(:ref_payment_action => "SALE")
+        ).merge(:ref_payment_action => "Sale")
 
         request.run(:reference_transaction, params)
       end

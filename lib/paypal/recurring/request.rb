@@ -53,11 +53,11 @@ module PayPal
 
       ATTRIBUTES = {
         :action                 => "ACTION",
-        :amount                 => ["PAYMENTREQUEST_0_AMT", "AMT"],
+        :amount                 => "PAYMENTREQUEST_0_AMT",
         :billing_type           => "L_BILLINGTYPE0",
         :cancel_url             => "CANCELURL",
-        :currency               => ["PAYMENTREQUEST_0_CURRENCYCODE", "CURRENCYCODE"],
-        :description            => ["DESC", "PAYMENTREQUEST_0_DESC", "L_BILLINGAGREEMENTDESCRIPTION0"],
+        :currency               => "PAYMENTREQUEST_0_CURRENCYCODE",
+        :description            => ["PAYMENTREQUEST_0_DESC", "L_BILLINGAGREEMENTDESCRIPTION0"],
         :note                   => "NOTE",
         :item_category          => "L_PAYMENTREQUEST_0_ITEMCATEGORY0",
         :item_name              => "L_PAYMENTREQUEST_0_NAME0",
@@ -68,7 +68,7 @@ module PayPal
         :frequency              => "BILLINGFREQUENCY",
         :initial_amount         => "INITAMT",
         :initial_amount_action  => "FAILEDINITAMTACTION",
-        :ipn_url                => ["PAYMENTREQUEST_0_NOTIFYURL", "NOTIFYURL"],
+        :ipn_url                => "PAYMENTREQUEST_0_NOTIFYURL",
         :locale                 => "LOCALECODE",
         :method                 => "METHOD",
         :no_shipping            => "NOSHIPPING",
