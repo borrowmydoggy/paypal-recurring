@@ -76,6 +76,7 @@ module PayPal
         :password               => "PWD",
         :payer_id               => "PAYERID",
         :payment_action         => "PAYMENTREQUEST_0_PAYMENTACTION",
+        :ref_payment_action     => "PAYMENTACTION",
         :period                 => "BILLINGPERIOD",
         :profile_id             => "PROFILEID",
         :reference              => ["PROFILEREFERENCE", "PAYMENTREQUEST_0_CUSTOM", "PAYMENTREQUEST_0_INVNUM"],

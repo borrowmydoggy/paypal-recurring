@@ -262,8 +262,8 @@ module PayPal
           :billing_agreement_id,
           :amount,
           :currency
-        ).merge(:payment_action => "Sale")
-        
+        ).merge(:ref_payment_action => "SALE")
+
         request.run(:reference_transaction, params)
       end
 
