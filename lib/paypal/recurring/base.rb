@@ -259,7 +259,10 @@ module PayPal
       def reference_transaction
         params = collect(
           :token,
-          :billing_agreement_id
+          :billing_agreement_id,
+          :amount,
+          :currency,
+          :payment_action
         )
         request.run(:reference_transaction, params)
       end
