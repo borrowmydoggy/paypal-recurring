@@ -14,7 +14,11 @@ module PayPal
           :currency     => :CURRENCYCODE,
           :amount       => :AMT,
           :description  => :DESC,
-          :ipn_url      => :NOTIFYURL
+          :ipn_url      => :NOTIFYURL,
+          :street       => :STREET,
+          :city         => :CITY,
+          :state        => :STATE,
+          :zip          => :ZIP
         )
 
         def agreed?
