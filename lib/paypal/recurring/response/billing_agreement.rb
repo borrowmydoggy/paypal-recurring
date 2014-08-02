@@ -3,11 +3,11 @@ module PayPal
     module Response
       class BillingAgreement < Base
         mapping(
-          :agreement_id => :BILLINGAGREEMENTID
+          :billing_agreement_id => :BILLINGAGREEMENTID
         )
 
         def obtained_billing_agreement?
-          !params[:BILLINGAGREEMENTID].blank?
+          !billing_agreement_id.blank?
         end
       end
     end
