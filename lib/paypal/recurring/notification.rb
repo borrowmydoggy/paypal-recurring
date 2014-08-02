@@ -22,7 +22,9 @@ module PayPal
         :email            => :receiver_email,
         :initial_amount   => :initial_payment_amount,
         :payer_email      => :payer_email,
-        :custom           => :custom
+        :custom           => :custom,
+        :payer_id         => :payer_id,
+        :description      => :transaction_subject
       })
 
       def initialize(params = {})
@@ -53,6 +55,14 @@ module PayPal
 
       def upgrade_payment?
         custom.try(:include?, 'Upgrade Payment')
+      end
+
+      def user_id
+        custom.match(/^.+user: (\d+),.*$/)[1] unless custom.nil?
+      end
+
+      def subscription_year
+        custom.match(/^.+year: (\d+)$/)[1] unless custom.nil?
       end
 
       def request
