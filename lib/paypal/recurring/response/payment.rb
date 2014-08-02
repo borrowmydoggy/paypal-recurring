@@ -3,24 +3,21 @@ module PayPal
     module Response
       class Payment < Base
         mapping(
-          :status         => :PAYMENTINFO_0_PAYMENTSTATUS,
-          :amount         => :PAYMENTINFO_0_AMT,
-          :fees           => :PAYMENTINFO_0_FEEAMT,
-          :transaction_id => :PAYMENTINFO_0_TRANSACTIONID,
-          :seller_id      => :PAYMENTINFO_0_SECUREMERCHANTACCOUNTID,
-          :reference      => [:PROFILEREFERENCE, :PAYMENTREQUEST_0_CUSTOM, :PAYMENTREQUEST_0_INVNUM]
+          :status                 => :PAYMENTINFO_0_PAYMENTSTATUS,
+          :amount                 => :PAYMENTINFO_0_AMT,
+          :fees                   => :PAYMENTINFO_0_FEEAMT,
+          :transaction_id         => :PAYMENTINFO_0_TRANSACTIONID,
+          :seller_id              => :PAYMENTINFO_0_SECUREMERCHANTACCOUNTID,
+          :reference              => [:PROFILEREFERENCE, :PAYMENTREQUEST_0_CUSTOM, :PAYMENTREQUEST_0_INVNUM]
+          :billing_agreement_id   => :BILLINGAGREEMENTID
         )
 
         def completed?
-          params[:PAYMENTINFO_0_PAYMENTSTATUS] == "Completed"
+          status == "Completed"
         end
 
         def approved?
           params[:PAYMENTINFO_0_ACK] == "Success"
-        end
-
-        def billing_agreement_id
-          params[:BILLINGAGREEMENTID]
         end
       end
     end
