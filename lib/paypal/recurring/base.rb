@@ -36,6 +36,7 @@ module PayPal
       attr_accessor :billing_agreement_id
       attr_accessor :payment_action
       attr_accessor :ref_payment_action
+      attr_accessor :custom
 
       def initialize(options = {})
         options.each {|name, value| send("#{name}=", value)}
@@ -264,7 +265,8 @@ module PayPal
           :billing_agreement_id,
           :amount,
           :currency,
-          :ref_payment_action
+          :ref_payment_action,
+          :custom
         )
 
         request.run(:reference_transaction, params)

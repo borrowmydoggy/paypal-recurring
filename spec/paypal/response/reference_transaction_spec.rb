@@ -7,7 +7,8 @@ describe PayPal::Recurring::Response::Profile do
     let(:paypal) {
       PayPal::Recurring.new({
         :token  => "EC-47J551124P900104V",
-        :billing_agreement_id => 'B-7FB31251F28061234'
+        :billing_agreement_id => 'B-7FB31251F28061234',
+        :custom => 'Some custom value'
       })
     }
 

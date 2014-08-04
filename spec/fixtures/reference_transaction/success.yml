@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api-3t.sandbox.paypal.com/nvp
     body:
       encoding: US-ASCII
-      string: USER=emir.ibrahimbegovic%2Bseller_api1.gmail.com&PWD=PRTZZX6JDACB95SA&SIGNATURE=AJnjtLN0ozBP-BF2ZJrj5sfbmGAxAnf5tev1-MgK5Z8IASmtj-Fw.5pt&VERSION=72.0&AMT=9.00&CURRENCYCODE=GBP&PAYERID=D2U7M6PTMJBML&TOKEN=EC-47J551124P900104V&METHOD=CreateBillingAgreement&REFERENCEID=B-7FB31251F28061234
+      string: USER=emir.ibrahimbegovic%2Bseller_api1.gmail.com&PWD=PRTZZX6JDACB95SA&SIGNATURE=AJnjtLN0ozBP-BF2ZJrj5sfbmGAxAnf5tev1-MgK5Z8IASmtj-Fw.5pt&VERSION=72.0&AMT=9.00&CURRENCYCODE=GBP&PAYERID=D2U7M6PTMJBML&TOKEN=EC-47J551124P900104V&METHOD=DoReferenceTransaction&REFERENCEID=B-7FB31251F28061234&CUSTOM=Some+arbitraty+description
     headers:
       accept:
       - ! '*/*'

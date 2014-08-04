@@ -58,11 +58,11 @@ module PayPal
       end
 
       def user_id
-        custom.match(/^.+user: (\d+),.*$/)[1] unless custom.nil?
+        custom.match(/^.+user: (\d+),.*$/)[1] unless custom.blank?
       end
 
       def subscription_year
-        custom.match(/^.+year: (\d+)$/)[1] unless custom.nil?
+        custom.match(/^.+year: (\d+)$/)[1] unless custom.blank?
       end
 
       def request
