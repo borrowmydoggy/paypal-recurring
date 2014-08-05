@@ -24,7 +24,7 @@ module PayPal
         :payer_email      => :payer_email,
         :custom           => [:custom, :mp_custom],
         :payer_id         => :payer_id,
-        :description      => [:transaction_subject, :mp_desc]
+        :ipn_description  => [:mp_desc, :transaction_subject]
       })
 
       def initialize(params = {})
