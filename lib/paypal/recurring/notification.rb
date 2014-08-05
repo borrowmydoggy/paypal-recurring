@@ -22,9 +22,9 @@ module PayPal
         :email            => :receiver_email,
         :initial_amount   => :initial_payment_amount,
         :payer_email      => :payer_email,
-        :custom           => :custom,
+        :custom           => [:custom, :mp_custom],
         :payer_id         => :payer_id,
-        :description      => :transaction_subject
+        :description      => [:transaction_subject, :mp_desc]
       })
 
       def initialize(params = {})
