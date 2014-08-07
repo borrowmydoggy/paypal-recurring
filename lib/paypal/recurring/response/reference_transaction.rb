@@ -10,11 +10,11 @@ module PayPal
         )
 
         def payment_completed?
-          params[:payment_status] == 'Completed'
+          payment_status == 'Completed'
         end
 
         def payment_instant?
-          params[:payment_type] == 'instant'
+          payment_type == 'instant'
         end
       end
     end

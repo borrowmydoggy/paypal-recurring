@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe PayPal::Recurring::Response::Profile do
+describe PayPal::Recurring::Response::BillingAgreement do
   context "when successful" do
     use_vcr_cassette "create_billing_agreement/success"
 
@@ -13,7 +13,7 @@ describe PayPal::Recurring::Response::Profile do
     subject { paypal.create_billing_agreement }
 
     it { should be_valid }
-    its(:agreement_id) { should == "B-7FB31251F28061234" }
+    its(:billing_agreement_id) { should == "B-7FB31251F28061234" }
     its(:errors) { should be_empty }
   end
 
