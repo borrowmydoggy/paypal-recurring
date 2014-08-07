@@ -16,7 +16,6 @@ module PayPal
         )
 
         def initialize(response = nil)
-          puts "RESPONSE IS #{response.params}"
           @response = response
         end
 
