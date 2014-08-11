@@ -49,7 +49,6 @@ module PayPal
         end
 
         def valid?
-          puts "RESPONSE #{params}"
           errors.empty? && success?
         end
 

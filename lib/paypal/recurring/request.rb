@@ -118,7 +118,6 @@ module PayPal
       def run(method, params = {})
         params = prepare_params(params.merge(:method => METHODS.fetch(method, method.to_s)))
         response = post(params)
-        puts "Running client request with params #{params}"
         Response.process(method, response)
       end
 
