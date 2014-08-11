@@ -14,7 +14,7 @@ module PayPal
           :reference            => [:PROFILEREFERENCE, :PAYMENTREQUEST_0_CUSTOM, :PAYMENTREQUEST_0_INVNUM]
         )
 
-        attr_accessor :ipn_description, :payer_id
+        attr_accessor :ipn_description, :payer_id, :user_id
 
         def completed?
           status == "Completed"

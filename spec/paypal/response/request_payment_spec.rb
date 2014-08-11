@@ -30,16 +30,25 @@ describe PayPal::Recurring::Response::Payment do
     before do
       @ipn_description = 'Random description'
       @payer_id = 'D2U7M6PTMJBML22'
+      @user_id = 22
+
       @response = PayPal::Recurring::Response::Payment.new
-      @response.ipn_description = 'Random description'
+      
+      @response.ipn_description = @ipn_description
+      @response.payer_id = @payer_id
+      @response.user_id = @user_id
     end
 
     it 'should set appropriate value to ipn_description' do
-      @response.ipn_description = @ipn_description
+      @response.ipn_description == @ipn_description
     end
 
     it 'should set appropriate value to payer_id' do
-      @response.payer_id = @payer_id
+      @response.payer_id == @payer_id
+    end
+
+    it 'should set appropriate value to user_id' do
+      @response.user_id == @user_id
     end
   end
 
