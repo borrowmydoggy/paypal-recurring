@@ -15,8 +15,9 @@ module PayPal
           :requested_at    => :TIMESTAMP
         )
 
-        def initialize(response = nil)
+        def initialize(response = nil, params = nil)
           @response = response
+          @params = params
         end
 
         def params
