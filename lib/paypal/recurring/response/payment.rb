@@ -9,8 +9,12 @@ module PayPal
           :transaction_id       => :PAYMENTINFO_0_TRANSACTIONID,
           :seller_id            => :PAYMENTINFO_0_SECUREMERCHANTACCOUNTID,
           :billing_agreement_id => :BILLINGAGREEMENTID,
+          :currency             => :PAYMENTINFO_0_CURRENCYCODE,
+          :paid_at              => :PAYMENTINFO_0_ORDERTIME,
           :reference            => [:PROFILEREFERENCE, :PAYMENTREQUEST_0_CUSTOM, :PAYMENTREQUEST_0_INVNUM]
         )
+
+        attr_accessor :ipn_description, :payer_id
 
         def completed?
           status == "Completed"
