@@ -131,7 +131,7 @@ module PayPal
       #   response = ppr.biling_agreement_details
       #
       def biling_agreement_details
-        request.run(:billing_agreement_id => billing_agreement_id)
+        request.run(:biling_agreement_details, :billing_agreement_id => billing_agreement_id)
       end
 
       # Request payment.
