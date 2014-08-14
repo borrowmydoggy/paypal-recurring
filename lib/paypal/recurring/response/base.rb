@@ -49,7 +49,6 @@ module PayPal
         end
 
         def valid?
-          puts "prams re #{params}"
           errors.empty? && success?
         end
 
