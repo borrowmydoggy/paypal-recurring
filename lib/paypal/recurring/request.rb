@@ -11,7 +11,8 @@ module PayPal
         :update_profile               => "UpdateRecurringPaymentsProfile",
         :refund                       => "RefundTransaction",
         :create_billing_agreement     => "CreateBillingAgreement",
-        :reference_transaction        => "DoReferenceTransaction"
+        :reference_transaction        => "DoReferenceTransaction",
+        :biling_agreement_details     => "BillAgreementUpdate"
       }
 
       INITIAL_AMOUNT_ACTIONS = {
@@ -95,7 +96,8 @@ module PayPal
         :version                => "VERSION",
         :req_billing_address    => "REQBILLINGADDRESS",
         :billing_type           => "L_BILLINGTYPE0",
-        :billing_agreement_id   => "REFERENCEID"
+        :billing_agreement_id   => "REFERENCEID",
+        :agreement_status       => "BILLINGAGREEMENTSTATUS"
       }
 
       CA_FILE = File.dirname(__FILE__) + "/cacert.pem"
@@ -117,6 +119,7 @@ module PayPal
       #
       def run(method, params = {})
         params = prepare_params(params.merge(:method => METHODS.fetch(method, method.to_s)))
+        puts "RUNNING METHOD #{method} with params #{params}"
         response = post(params)
         Response.process(method, response)
       end

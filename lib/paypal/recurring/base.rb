@@ -123,6 +123,18 @@ module PayPal
         request.run(:details, :token => token)
       end
 
+      # Return biliing agreement details.
+      #
+      #   # ppr = PayPal::Recurring.new({
+      #     :token                   => "EC-6LX60229XS426623E",
+      #     :billing_agreement_id    => "WTTS5KC2T46YU"
+      #   })
+      #   response = ppr.biling_agreement_details
+      #
+      def biling_agreement_details
+        request.run(:details, :token => token, :billing_agreement_id => billing_agreement_id)
+      end
+
       # Request payment.
       #
       #   # ppr = PayPal::Recurring.new({

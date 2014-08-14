@@ -9,6 +9,7 @@ module PayPal
       autoload :Profile, "paypal/recurring/response/profile"
       autoload :BillingAgreement,  "paypal/recurring/response/billing_agreement"
       autoload :ReferenceTransaction,  "paypal/recurring/response/reference_transaction"
+      autoload :BillingAgreementDetails,  "paypal/recurring/response/billing_agreement_details"
 
       RESPONDERS = {
         :checkout                 => "Checkout",
@@ -20,7 +21,8 @@ module PayPal
         :update_profile           => "ManageProfile",
         :create_billing_agreement => "BillingAgreement",
         :refund                   => "Refund",
-        :reference_transaction    => "ReferenceTransaction"
+        :reference_transaction    => "ReferenceTransaction",
+        :biling_agreement_details => "BillingAgreementDetails"
       }
 
       def self.process(method, response)
