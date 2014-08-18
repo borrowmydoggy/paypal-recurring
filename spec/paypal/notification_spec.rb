@@ -16,6 +16,11 @@ describe PayPal::Recurring::Notification do
     subject.should be_recurring_payment_profile
   end
 
+  it "detects echeck payment" do
+    subject.params[:txn_type] = "echeck"
+    subject.should be_echeck
+  end
+
   it "normalizes payment date" do
     subject.params[:payment_date] = "20:37:06 Jul 04, 2011 PDT" # PDT = -0700
     subject.paid_at.strftime("%Y-%m-%d %H:%M:%S").should == "2011-07-05 03:37:06"

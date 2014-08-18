@@ -53,6 +53,10 @@ module PayPal
         type == "merch_pmt"
       end
 
+      def echeck?
+        type == "echeck"
+      end
+
       def upgrade_payment?
         custom.try(:include?, 'Upgrade Payment')
       end
