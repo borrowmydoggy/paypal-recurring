@@ -91,6 +91,10 @@ module PayPal
         status == "Completed"
       end
 
+      def pending?
+        status == "Pending"
+      end
+
       def next_payment_date
         self.class.convert_to_time(params[:next_payment_date]) if params[:next_payment_date]
       end

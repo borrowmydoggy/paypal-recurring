@@ -106,6 +106,18 @@ describe PayPal::Recurring::Notification do
     end
   end
 
+  describe "#status" do
+    it "returns from reference transaction" do
+      subject.params[:payment_status] = "Completed"
+      subject.should be_completed
+    end
+
+    it "returns from reference transaction" do
+      subject.params[:payment_status] = "Pending"
+      subject.should be_pending
+    end
+  end
+
   context "when successful" do
     use_vcr_cassette "notification/success"
 
