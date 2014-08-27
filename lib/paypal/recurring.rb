@@ -101,6 +101,10 @@ module PayPal
       "116.0"
     end
 
+    def self.paypal_redirect_url(token)
+      "#{PayPal::Recurring.site_endpoint}?cmd=_express-checkout&token=#{token}"
+    end
+
     # Return site endpoint based on current environment.
     #
     def self.site_endpoint

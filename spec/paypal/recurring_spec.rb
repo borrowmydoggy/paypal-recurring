@@ -9,7 +9,7 @@ describe PayPal::Recurring do
 
   describe ".version" do
     it "returns PayPal's API version" do
-      PayPal::Recurring.api_version.should eq("72.0")
+      PayPal::Recurring.api_version.should eq("116.0")
     end
   end
 
@@ -57,6 +57,12 @@ describe PayPal::Recurring do
     it "returns url" do
       PayPal::Recurring.api_endpoint.should_not be_nil
       PayPal::Recurring.api_endpoint.should == PayPal::Recurring.endpoints[:api]
+    end
+  end
+
+  describe ".paypal_redirect_url" do
+    it "returns url" do
+      PayPal::Recurring.paypal_redirect_url('EC-6K22').should == "#{PayPal::Recurring.site_endpoint}?cmd=_express-checkout&token=EC-6K22"
     end
   end
 
