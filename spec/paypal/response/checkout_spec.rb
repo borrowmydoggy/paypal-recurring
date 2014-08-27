@@ -22,7 +22,7 @@ describe PayPal::Recurring::Response::Checkout do
     its(:checkout_url) { should == "#{PayPal::Recurring.site_endpoint}?cmd=_express-checkout&token=EC-6K296451S2213041J&useraction=commit" }
 
     it "should retur right url with paramaterized token" do
-      subject.redirect_back_to_paypal_url('EC-6K22').should == "#{PayPal::Recurring.site_endpoint}?cmd=_express-checkout&token=EC-6K22"
+      subject.paypal_redirect_url('EC-6K22').should == "#{PayPal::Recurring.site_endpoint}?cmd=_express-checkout&token=EC-6K22"
     end
   end
 
