@@ -62,4 +62,16 @@ describe PayPal::Recurring::Response::Payment do
 
     its(:errors) { should have(2).items }
   end
+
+  context "when failed and L_ERRORCODE0: '10486'" do
+    use_vcr_cassette("payment/redirect_back")
+    subject { PayPal::Recurring.new.request_payment }
+
+    it { should_not be_valid }
+    it { should_not be_completed }
+    it { should_not be_approved }
+    it { subject.error_and_redirect_back_to_paypal?.should be_true  }
+
+    its(:errors) { should have(1).items }
+  end
 end

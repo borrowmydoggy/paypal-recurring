@@ -23,6 +23,10 @@ module PayPal
         def approved?
           params[:PAYMENTINFO_0_ACK] == "Success"
         end
+
+        def error_and_redirect_back_to_paypal?
+          !valid? && params[:L_ERRORCODE0] == "10486"
+        end
       end
     end
   end

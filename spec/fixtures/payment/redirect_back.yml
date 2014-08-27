@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-3t.sandbox.paypal.com/nvp
+    body:
+      encoding: US-ASCII
+      string: USER=fnando.vieira%2Bseller_api1.gmail.com&PWD=PRTZZX6JDACB95SA&SIGNATURE=AJnjtLN0ozBP-BF2ZJrj5sfbmGAxAnf5tev1-MgK5Z8IASmtj-Fw.5pt&VERSION=72.0&PAYMENTREQUEST_0_PAYMENTACTION=Sale&METHOD=DoExpressCheckoutPayment
+    headers:
+      accept:
+      - ! '*/*'
+      user-agent:
+      - PayPal::Recurring/0.1.8
+      content-type:
+      - application/x-www-form-urlencoded
+      connection:
+      - close
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Mon, 23 Apr 2012 04:06:53 GMT
+      server:
+      - Apache
+      content-length:
+      - '569'
+      connection:
+      - close
+      content-type:
+      - text/plain; charset=utf-8
+    body:
+      encoding: US-ASCII
+      string: TIMESTAMP=2012%2d04%2d23T04%3a06%3a54Z&CORRELATIONID=df5373a627ea4&ACK=Failure&VERSION=72%2e0&BUILD=2808426&L_ERRORCODE0=10486&L_SHORTMESSAGE0=This%20transaction%20couldn't%20be%20completed.&L_LONGMESSAGE0=This%20transaction%20couldn't%20be%20completed.%20Please%20redirect%20your%20customer%20to%20PayPal.
+    http_version: '1.1'
+  recorded_at: Mon, 23 Apr 2012 04:06:54 GMT
+recorded_with: VCR 2.1.0
