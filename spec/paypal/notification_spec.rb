@@ -118,6 +118,68 @@ describe PayPal::Recurring::Notification do
     end
   end
 
+  describe "#custom_info" do
+    context 'User regex' do
+      it "when custom field is null, returns empty array" do
+        subject.params[:custom] = nil
+        subject.custom_info(/^.+user: (\d+).*$/).should be_empty
+      end
+
+      it "when custom field doesn't contain the user information, returns empty array" do
+        subject.params[:custom] = '50 cent'
+        subject.custom_info(/^.+user: (\d+).*$/).should be_empty
+      end
+
+      it "when custom field contains the user information, returns match data" do
+        subject.params[:custom] = 'New subscription for user: 1111, year: 2011'
+        subject.custom_info(/^.+user: (\d+).*$/)[1].should == '1111'
+      end
+
+      it "when custom field contains the user information, returns match data" do
+        subject.params[:custom] = 'New subscription for user: 1111, year: 2011'
+        subject.custom_info(/^.+year: (\d+)$/)[1].should == '2011'
+      end
+    end
+  end
+
+  describe "#user_id and #subscription_year" do
+    context 'custom is nil' do
+      it 'user_id should be nil' do
+        subject.params[:custom] = nil
+        subject.user_id.should be_nil
+      end
+
+      it 'subscription_year should be nil' do
+        subject.params[:custom] = nil
+        subject.subscription_year.should be_nil
+      end
+    end
+
+    context 'custom has invalid value' do
+      it 'user_id should be nil' do
+        subject.params[:custom] = '50 cent'
+        subject.user_id.should be_nil
+      end
+
+      it 'subscription_year should be nil' do
+        subject.params[:custom] = 'Eazy e'
+        subject.subscription_year.should be_nil
+      end
+    end
+
+    context 'custom has valid value' do
+      it 'user_id should not be nil' do
+        subject.params[:custom] = 'New subscription for user: 1111, year: 2011'
+        subject.user_id.should == '1111'
+      end
+
+      it 'subscription_year should be nil' do
+        subject.params[:custom] = 'New subscription for user: 1111, year: 2011'
+        subject.subscription_year.should  == '2011'
+      end
+    end
+  end
+
   context "when successful" do
     use_vcr_cassette "notification/success"
 

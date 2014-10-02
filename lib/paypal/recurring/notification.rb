@@ -61,16 +61,21 @@ module PayPal
         custom.try(:include?, 'Upgrade Payment')
       end
 
-      def has_custom?
-        !custom.blank?
+      def custom_info(regex)
+        match_parts = custom.try(:match, regex)
+        if !custom.blank? && match_parts
+          return match_parts
+        end
+
+        []
       end
 
       def user_id
-        custom.match(/^.+user: (\d+).*$/)[1] if has_custom?
+        custom_info(/^.+user: (\d+).*$/)[1]
       end
 
       def subscription_year
-        custom.match(/^.+year: (\d+)$/)[1] if has_custom?
+        custom_info(/^.+year: (\d+)$/)[1]
       end
 
       def request
