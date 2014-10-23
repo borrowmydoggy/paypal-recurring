@@ -119,6 +119,9 @@ module PayPal
       #
       def run(method, params = {})
         params = prepare_params(params.merge(:method => METHODS.fetch(method, method.to_s)))
+        puts "WELCOME TO NEW YOK MADAFAKAZ WHERE WE DONT PLAY"
+        puts "#{params.inspect}"
+
         response = post(params)
         Response.process(method, response)
       end
