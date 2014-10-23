@@ -21,6 +21,27 @@ describe PayPal::Recurring::Response::Details do
     its(:agreement_payer_status) { should == "verified" }
   end
 
+  context "cancel the agreement, successful" do
+    use_vcr_cassette "biling_agreement_details/success_cancel_agreement"
+
+    subject {
+      ppr = PayPal::Recurring.new(
+        {
+          :billing_agreement_id => "B-0D277778WT5075231", :agreement_status => "Canceled" 
+        }
+      )
+      ppr.biling_agreement_details
+    }
+
+    it { should be_valid }
+    it { should be_success }
+
+    its(:errors) { should be_empty }
+    its(:billing_agreement_id) { should == "B-0D277778WT5075231" }
+    its(:agreement_status) { should_not == "Active" }
+    its(:active?) { should be_false }
+  end
+
   context "when failure" do
     use_vcr_cassette("biling_agreement_details/failure")
     subject {

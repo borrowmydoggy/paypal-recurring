@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe PayPal::Recurring::Response::BillingAgreement do
-  context "when successful" do
+  context "check status, successful" do
     use_vcr_cassette "create_billing_agreement/success"
 
     let(:paypal) {

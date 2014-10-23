@@ -37,6 +37,7 @@ module PayPal
       attr_accessor :payment_action
       attr_accessor :ref_payment_action
       attr_accessor :custom
+      attr_accessor :agreement_status
 
       def initialize(options = {})
         options.each {|name, value| send("#{name}=", value)}
@@ -131,7 +132,12 @@ module PayPal
       #   response = ppr.biling_agreement_details
       #
       def biling_agreement_details
-        request.run(:biling_agreement_details, :billing_agreement_id => billing_agreement_id)
+        params = collect(
+          :billing_agreement_id,
+          :agreement_status
+        )
+
+        request.run(:biling_agreement_details, params)
       end
 
       # Request payment.
