@@ -95,7 +95,6 @@ module PayPal
         :username               => "USER",
         :version                => "VERSION",
         :req_billing_address    => "REQBILLINGADDRESS",
-        :billing_type           => "L_BILLINGTYPE0",
         :billing_agreement_id   => "REFERENCEID",
         :agreement_status       => "BILLINGAGREEMENTSTATUS"
       }
@@ -119,8 +118,6 @@ module PayPal
       #
       def run(method, params = {})
         params = prepare_params(params.merge(:method => METHODS.fetch(method, method.to_s)))
-        puts "WELCOME TO NEW YOK MADAFAKAZ WHERE WE DONT PLAY"
-        puts "#{params.inspect}"
 
         response = post(params)
         Response.process(method, response)
