@@ -3,10 +3,13 @@ module PayPal
     module Response
       class ReferenceTransaction < Base
         mapping(
-          :payment_status => :PAYMENTSTATUS,
-          :payment_type => :PAYMENTTYPE,
-          :transaction_id => :TRANSACTIONID,
-          :agreement_id => :BILLINGAGREEMENTID
+          payment_status: :PAYMENTSTATUS,
+          payment_type: :PAYMENTTYPE,
+          transaction_id: :TRANSACTIONID,
+          agreement_id: :BILLINGAGREEMENTID,
+          amount: :AMT,
+          currency: :CURRENCYCODE,
+          paid_at: :ORDERTIME
         )
 
         def payment_completed?
